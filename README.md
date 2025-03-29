@@ -20,6 +20,11 @@
   + Tạo các bảng dữ liệu với các trường như mô tả, chọn kiểu dữ liệu phù hợp với thực tế (tự tìm hiểu)
   + Mỗi bảng cần thiết lập PK, FK(s) và CK(s) nếu cần thiết. (chú ý dấu # và @: # là chỉ PK, @ chỉ FK)
 2. Chuyển các thao tác đồ hoạ trên thành lệnh SQL tương đương. lưu tất cả các lệnh SQL trong file: Script_DML.sql
+
+## Sửa bảng DKMH và bảng Điểm từ bài tập 2 để có các bảng như yêu cầu.
+2. Nhập dữ liệu demo cho các bảng (nhập có kiểm soát từ tính năng Edit trên UI của mssm)
+3. Viết lệnh truy vấn để: Tính được điểm thành phần của 1 sinh viên đang học tại 1 lớp học phần.
+
 # BÀI LÀM
 ## THỰC HIỆN TẠO CSDL BÀI TOÁN BẰNG UI
 1. Tạo database mới, mô tả các tham số(nếu có) trong quá trình
@@ -141,3 +146,50 @@ CREATE TABLE DKMH (
     FOREIGN KEY (MaSV) REFERENCES SinhVien(MaSV)
 );
 GO
+## sửa lại bảng dkmh thêm bảng điểm
+-- Tạo bảng dkmh
+CREATE TABLE DANGKIMONHOC(
+  MALOPHOCPHAN NVARCHAR(10),
+  MASINHVIEN NVARCHAR(13),
+  PRIMARY KEY (MALOPHOCPHAN, MASINHVIEN),
+  FOREIGN KEY (MALOPHOCPHAN) REFERENCES LOPHOCPHAN(MALOPHOCPHAN),
+  FOREIGN KEY (MASINHVIEN) REFERENCES SINHVIEN(MASINHVIEN)
+);
+GO
+
+-- Tạo bảng điểm
+CREATE TABLE DIEM(
+  MALOPHOCPHAN NVARCHAR(10),
+  MASINHVIEN NVARCHAR(13),
+  DIEMTHANHPHAN FLOAT CHECK (DIEMTHANHPHAN BETWEEN 0 AND 10),
+  DIEMTHI FLOAT CHECK (DIEMTHI BETWEEN 0 AND 10),
+  PHANTRAMTHI FLOAT CHECK (PHANTRAMTHI BETWEEN 0 AND 100),
+  DIEMTONGKET AS (DIEMTHANHPHAN * 0.4 + DIEMTHI * 0.6),
+  PRIMARY KEY (MALOPHOCPHAN, MASINHVIEN),
+  FOREIGN KEY (MALOPHOCPHAN, MASINHVIEN) REFERENCES DANGKIMONHOC(MALOPHOCPHAN, MASINHVIEN)
+);
+GO
+## hình ảnh paste
+![image](https://github.com/user-attachments/assets/4696e892-ec9e-4b85-8631-f07219701d5d)
+![image](https://github.com/user-attachments/assets/028041cf-b05e-4ccc-afb2-b21843c6cb28)
+![image](https://github.com/user-attachments/assets/a188d2e5-8444-490a-8a9f-5ebdbd4a112c)
+![image](https://github.com/user-attachments/assets/0060aed9-1bb9-49f1-b818-72e15cb0eb50)
+![image](https://github.com/user-attachments/assets/d8488825-886e-499a-a9ef-4a02c4795dde)
+![image](https://github.com/user-attachments/assets/449db416-60c7-47e1-ac0b-c79d0fe4fbdf)
+![image](https://github.com/user-attachments/assets/e25a0ae0-05bf-49c7-bb0b-74327928794b)
+![image](https://github.com/user-attachments/assets/310821fc-7f70-4ed4-99c0-627260d404b1)
+![image](https://github.com/user-attachments/assets/ab70c9d0-6d3f-4ae8-a91a-d7b1f34486bd)
+![image](https://github.com/user-attachments/assets/3f9cc5e4-2c9c-4d75-9d62-02e9991c9df8)
+![image](https://github.com/user-attachments/assets/94b09d22-f728-4107-ace2-1fd6bc8b8782)
+![image](https://github.com/user-attachments/assets/4de49d4e-acb5-492f-a4c5-9d5bdedda2da)
+
+
+
+
+
+
+
+
+
+
+
