@@ -21,7 +21,7 @@
   + Mỗi bảng cần thiết lập PK, FK(s) và CK(s) nếu cần thiết. (chú ý dấu # và @: # là chỉ PK, @ chỉ FK)
 2. Chuyển các thao tác đồ hoạ trên thành lệnh SQL tương đương. lưu tất cả các lệnh SQL trong file: Script_DML.sql
 
-## Sửa bảng DKMH và bảng Điểm từ bài tập 2 để có các bảng như yêu cầu.
+## bài tập số 3 Sửa bảng DKMH và bảng Điểm từ bài tập 2 để có các bảng như trên.
 2. Nhập dữ liệu demo cho các bảng (nhập có kiểm soát từ tính năng Edit trên UI của mssm)
 3. Viết lệnh truy vấn để: Tính được điểm thành phần của 1 sinh viên đang học tại 1 lớp học phần.
 
